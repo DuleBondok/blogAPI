@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function Homepage() {
   return (
     <h1>Hello</h1>
   );
 }
 
-export default App;
+export default Homepage;
