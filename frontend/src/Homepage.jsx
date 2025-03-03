@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Header from './Header';
 
 function Homepage() {
   return (
-    <h1>Hello</h1>
+    <div>
+      <Header />
+    </div>
   );
 }
 
