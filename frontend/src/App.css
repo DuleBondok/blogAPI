@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Knewave";
+  src: url("./fonts/Knewave.ttf") format("truetype");
+}
+
 .logoImg {
   height: 6vh;
 }
@@ -5,11 +10,12 @@
 .headerDiv {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(155, 155, 155);
   height: 9vh;
   align-items: center;
   justify-content: center;
   gap: 59vw;
+  box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
 }
 
 .headerLogoDiv{
@@ -17,19 +23,12 @@
   flex-direction: row;
   align-items: center;
   gap: 0.4vw;
-  border: 1px solid black;
-}
-
-.homeBtn {
-  font-size: 1.2rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin-left: 2vw;
 }
 
 .nightModeImg {
-  height: 4vh;
+  height: 3vh;
   padding: 0.7vh;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(221, 221, 221);
   border-radius: 0.8vh;
 }
 
@@ -40,5 +39,53 @@
   align-items: center;
 }
 
+.headerText {
+  font-family: Knewave;
+  letter-spacing: 0.2rem;
+  font-weight: 200;
+}
+
+.homeBtn {
+  margin-left: 2vw;
+  font-size: 1.2rem;
+  border: none;
+  background-color: white;
+  color: rgb(54, 54, 54);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logInBtn {
+  border: none;
+  background-color: white;
+  color: rgb(54, 54, 54);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+}
+
+.signUpBtn {
+  border: none;
+  background-color: white;
+  color: rgb(54, 54, 54);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+  border-radius: 0.6vh;
+  background: linear-gradient(to right, #2d85f8, #1566f1);
+  padding: 1vh;
+}
+
+.homeBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.logInBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.signUpBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 
