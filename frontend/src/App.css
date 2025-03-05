@@ -69,7 +69,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.2rem;
   border-radius: 0.6vh;
-  background: linear-gradient(to right, #2d85f8, #1566f1);
+  background: linear-gradient(to right, #59a0fd, #1465f0);
   padding: 1vh;
 }
 
@@ -86,6 +86,101 @@
 .signUpBtn:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.underHeaderDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 60vh;
+}
+
+.welcomeToDiv {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  border-bottom: 1px solid rgb(155, 155, 155);
+  box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
+}
+
+.welcomeToHeader {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 11vw;
+  font-size: 3rem;
+}
+
+.blogsterHeader {
+  font-family: Knewave;
+  margin-left: 16vw;
+  margin-top: -4vh;
+  font-size: 4rem;
+  letter-spacing: 0.7rem;
+  font-weight: 100;
+  background: linear-gradient(to right, #59a0fd, #063c99);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcomeText {
+  margin-left: 11vw;
+  width: 32vw;
+  font-size: 1.4rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: -2vh;
+}
+
+.welcomeButtonsDiv {
+  display: flex;
+  flex-direction: row;
+  margin-left: 11vw;
+  width: 16vw;
+  height: 5vh;
+  gap: 2vw;
+  margin-top: 2vh;
+}
+
+.laptopImg {
+  box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
+  border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+.welcomeSignInBtn {
+  width: 6vw;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 1vh;
+  border: none;
+  color: white;
+  outline: none;
+  background: linear-gradient(to right, #59a0fd, #063c99);
+}
+
+.welcomeSignInBtn:hover {
+  background: linear-gradient(to right, #3f8ef5, #04255f);
+  cursor: pointer;
+}
+
+.gitHubBtn {
+  width: 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4vw;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 1vh;
+  border: none;
+  outline: none;
+}
+
+.gitHubBtn:hover {
+  cursor: pointer;
+  background-color: rgb(175, 175, 175);
+}
+
+.gitHubIcon {
+  height: 2.8vh;
 }
 
 
