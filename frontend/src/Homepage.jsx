@@ -3,9 +3,13 @@ import './App.css';
 import React from 'react';
 import Header from './Header';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 function Homepage() {
   const navigate = useNavigate();
+   useEffect(() => {
+          document.title = "Home | blogster";
+        }, []);
   return (
     <div>
       <Header />

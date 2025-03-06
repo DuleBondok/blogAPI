@@ -312,4 +312,14 @@
   color: #1465f0;
 }
 
+.logInFormDiv {
+  width: 16vw;
+  height: 31vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #ffffff, rgb(241, 241, 241));
+  border-radius: 0.6vh;
+  box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
+}
+
 

@@ -3,10 +3,14 @@ import React from "react";
 import "./App.css"
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+    useEffect(() => {
+        document.title = "Sign Up | blogster";
+      }, []);
     return (
         <div>
             <Header />
