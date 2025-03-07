@@ -1,3 +1,4 @@
+const { authenticateJWT, isAdmin } = require("./middlewares");
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -52,28 +53,36 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/login", async (req, res, next) => {
-  const { username, password } = req.body;
-
-  try {
-    const user = await prisma.user.findUnique({ where: { username } });
-
-    if (!user) {
-      return res.status(401).json({ message: "Invalid username or password" });
+    const { username, password } = req.body;
+  
+    try {
+      const user = await prisma.user.findUnique({ where: { username } });
+  
+      if (!user) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
+  
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
+  
+      
+      const token = jwt.sign(
+        { id: user.id, role: user.role }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: "1h" }
+      );
+  
+      res.json({ message: "Login successful", token, role: user.role });
+    } catch (err) {
+      console.error("Login error: ", err);
+      res.status(500).json({ message: "Error logging in", error: err.message });
     }
+  });
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid username or password" });
-    }
-
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    res.json({ message: "Login successful", token });
-  } catch (err) {
-    console.error("Login error: ", err);
-    res.status(500).json({ message: "Error logging in", error: err.message });
-  }
+  app.get("/admin", authenticateJWT, isAdmin, (req, res) => {
+    res.json({ message: "Welcome, Admin!" });
 });
 
 app.listen(5000, () => {

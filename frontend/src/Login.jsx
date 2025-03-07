@@ -30,8 +30,13 @@ function Login() {
       console.log("Login successful", response.data);
 
       localStorage.setItem("token", response.data.token);
-      navigate("/");
-    } catch (error) {
+      localStorage.setItem("role", response.data.role);
+      if (response.data.role === "admin") {
+        navigate("/admin");
+    } else {
+        navigate("/profile");
+    } }
+    catch (error) {
       console.error("Login failed:", error);
       setError(error.response?.data?.message || "Invalid username or password");
     }

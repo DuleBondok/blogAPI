@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
 import { useNavigate } from "react-router-dom";
+import LogoutBtn from "./LogoutBtn";
 
 function Header() {
     const navigate = useNavigate();
