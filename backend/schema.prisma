@@ -25,6 +25,7 @@ model Post {
   authorId  String
   createdAt DateTime @default(now())
   comments  Comment[]
+  image     String?
 }
 
 model Comment {

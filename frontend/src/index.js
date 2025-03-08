@@ -10,6 +10,7 @@ import AdminRoute from "./AdminRoute";
 import AdminDashboard from "./AdminDashboard";
 import UserProfile from './UserProfile';
 import ProtectedRoute from './ProtectedRoute';
+import PrivateRoute from './PrivateRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,7 +22,7 @@ root.render(
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<ProtectedRoute><Login /></ProtectedRoute>} />
         <Route path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<PrivateRoute> <UserProfile /> </PrivateRoute>} />
       </Routes>
     </Router>
   </React.StrictMode>

@@ -5,6 +5,7 @@ import LogoutBtn from "./LogoutBtn";
 
 function Header() {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
     return (
         <div className="headerDiv">
             <div className="headerLogoDiv">
@@ -17,6 +18,7 @@ function Header() {
                 <button className="logInBtn" onClick={() => navigate("/login")}>Log In</button>
                 <button className="signUpBtn" onClick={() => navigate("/signup")}>Sign Up</button>
             </div>
+            {token && <LogoutBtn />}
 
         </div>
     )
