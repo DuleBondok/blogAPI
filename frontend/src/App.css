@@ -3,6 +3,11 @@
   src: url("./fonts/Knewave.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Sans";
+  src: url("./fonts/Sans.ttf") format("truetype");
+}
+
 .logoImg {
   height: 6vh;
 }
@@ -18,7 +23,7 @@
   box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
 }
 
-.headerLogoDiv{
+.headerLogoDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,14 +56,16 @@
   border: none;
   background-color: white;
   color: rgb(54, 54, 54);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .logInBtn {
   border: none;
   background-color: white;
   color: rgb(54, 54, 54);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.2rem;
 }
 
@@ -66,7 +73,8 @@
   border: none;
   background-color: white;
   color: rgb(54, 54, 54);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.2rem;
   border-radius: 0.6vh;
   background: linear-gradient(to right, #59a0fd, #1465f0);
@@ -104,7 +112,7 @@
 }
 
 .welcomeToHeader {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-left: 11vw;
   font-size: 3rem;
 }
@@ -125,7 +133,8 @@
   margin-left: 11vw;
   width: 32vw;
   font-size: 1.4rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin-top: -2vh;
 }
 
@@ -146,7 +155,8 @@
 
 .welcomeSignInBtn {
   width: 6vw;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 1vh;
@@ -220,7 +230,8 @@
 }
 
 .signUpLabel {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
   margin-left: 1vw;
@@ -286,7 +297,8 @@
   margin-left: 1vw;
   margin-top: 3vh;
   height: 3.4vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
@@ -332,7 +344,8 @@
   border: none;
   border-radius: 0.6vh;
   font-size: 1.2rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 1.5vh;
 }
 
@@ -346,7 +359,8 @@
 }
 
 .adminDashboardHeader {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.8rem;
   position: absolute;
   left: 43.5vw;
@@ -365,7 +379,8 @@
 }
 
 .postLabel {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.3rem;
   margin-top: 2vh;
 }
@@ -382,7 +397,6 @@
 }
 
 .postListDiv {
-  border: 1px solid black;
   width: 90vw;
   position: relative;
   margin-left: 5vw;
@@ -392,20 +406,49 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 8vw;
 }
 
 .postCard {
   display: flex;
   flex-direction: column;
-  width: 16vw;
-  height: 40vh;
-  align-items: center;
+  width: 18vw;
+  height: 46vh;
   border-radius: 1vh;
   overflow: hidden;
+  box-shadow: rgba(85, 85, 85, 0.24) 0px 3px 8px;
 }
 
 .postImg {
-  width: 16vw;
+  width: 18vw;
+  height: 20vh;
 }
 
+.postTitle {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-left: 1.2vw;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-top: 0.4vh;
+}
 
+.postAuthor {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-left: 1.2vw;
+  background-color: green;
+  width: fit-content;
+  padding: 0.4vh;
+  font-size: 0.7rem;
+  color: white;
+  border-radius: 0.5vh;
+  margin-top: -0.6vh
+}
+
+.postContent {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-left: 1.2vw;
+  height: 2vh;
+  margin-top: -0.4vh;
+  width: 90%;
+}

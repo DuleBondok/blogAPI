@@ -69,11 +69,11 @@ function Homepage() {
           posts.map((post) => (
             <div key={post.id} className="postCard">
               {post.image && <img className="postImg" src={`http://localhost:5000${post.image}`} alt="Post" />}
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>
-                <strong>Author:</strong> {post.author.username}
+              <h2 className="postTitle">{post.title}</h2>
+              <p className="postAuthor">
+                {post.author.username}
               </p>
+              <p className="postContent">{post.content.length > 100 ? post.content.substring(0, 180) + "..." : post.content}</p>
             </div>
           ))
         ) : (
