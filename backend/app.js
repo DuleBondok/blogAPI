@@ -12,6 +12,9 @@ require("dotenv").config();
 const authMiddleware = require("./authMiddleware");
 const cors = require("cors");
 
+app.use(express.json());
+app.use(cors());
+
 const storage = multer.diskStorage({
   destination: "./uploads",
   filename: (req, file, cb) => {
@@ -21,8 +24,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use(express.json());
-app.use(cors());
 app.get("/posts", async (req, res) => {
     res.set("Cache-Control", "no-store");
     console.log("GET request to /posts received");
@@ -60,6 +61,20 @@ app.get("/posts", async (req, res) => {
       res.status(500).json({ message: "Error fetching post" });
     }
 });
+
+app.get("/posts/:id/comments", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const comments = await prisma.comment.findMany({
+        where: { postId: id },
+        include: { author: true },
+      });
+      res.json(comments);
+    } catch (err) {
+      console.error("Error fetching comments:", err);
+      res.status(500).json({ message: "Error fetching comments" });
+    }
+  });
 
 
 app.get("/api/example", (req, res) => {
@@ -132,30 +147,40 @@ app.post("/login", async (req, res, next) => {
 
 app.post("/create-comment", authenticateJWT, async (req, res) => {
     const { content, postId } = req.body;
-  
-    if (!content || !postId) {
-      return res.status(400).json({ message: "Content and postId are required" });
-    }
-  
-    try {
-      const comment = await prisma.comment.create({
-        data: {
-          content,
-          authorId: req.user.id,
-          postId,
-        },
-      });
-  
-      res.status(201).json({ message: "Comment submitted successfully", comment });
-    } catch (err) {
-      console.error("Error submitting comment:", err);
-      res.status(500).json({ message: "Error submitting comment", error: err.message });
-    }
-  });
+    const authorId = req.user.id;
 
-app.get("/admin", authenticateJWT, isAdmin, (req, res) => {
-  res.json({ message: "Welcome, Admin!" });
+    if (!content || !postId) {
+        return res.status(400).json({ message: "Content and postId are required" });
+    }
+
+    try {
+
+        console.log("Creating comment with:", { content, postId, authorId });
+        
+        console.log("Received comment data:", { content, postId, authorId });
+
+        
+        const post = await prisma.post.findUnique({ where: { id: postId } });
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+
+        
+        const newComment = await prisma.comment.create({
+            data: {
+                content,
+                postId,
+                authorId: authorId,
+            },
+        });
+
+        res.status(201).json(newComment);
+    } catch (error) {
+        console.error("Error creating comment:", error);
+        res.status(500).json({ message: "Error creating comment", error: error.message });
+    }
 });
+
 
 app.post(
   "/create-post",
@@ -186,6 +211,10 @@ app.post(
     }
   }
 );
+
+app.get("/admin", authenticateJWT, isAdmin, (req, res) => {
+    res.json({ message: "Welcome, Admin!" });
+  });
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 

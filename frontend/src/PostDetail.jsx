@@ -10,6 +10,7 @@ function PostDetail() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [content, setContent] = useState("");
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios
@@ -20,6 +21,14 @@ function PostDetail() {
       })
       .catch((error) => console.error("Error fetching post:", error))
       .finally(() => setLoading(false));
+
+    axios
+      .get(`http://localhost:5000/posts/${id}/comments`)
+      .then((response) => {
+        console.log("Fetched comments:", response.data);
+        setComments(response.data); // Set the comments data in state
+      })
+      .catch((error) => console.error("Error fetching comments:", error));
   }, [id]);
 
   if (loading) return <p>Loading...</p>;
@@ -48,6 +57,7 @@ function PostDetail() {
       if (response.ok) {
         alert("Comment submitted successfully!");
         setContent(""); // Clear the content input after submission
+        setComments((prevComments) => [...prevComments, data]);
       } else {
         alert(data.message || "Error submitting comment");
       }
@@ -85,7 +95,11 @@ function PostDetail() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             ></textarea>
-            <button type="submit" className="addCommentBtn" onClick={handleSubmit}>
+            <button
+              type="submit"
+              className="addCommentBtn"
+              onClick={handleSubmit}
+            >
               Submit
             </button>
           </div>
@@ -94,6 +108,20 @@ function PostDetail() {
         )}
         <div className="commentListDiv">
           <h1 className="commentsHeader">Comments</h1>
+          {comments.length > 0 ? (
+            comments.map((comment) => (
+              <div key={comment.id} className="commentInList">
+                <p className="commentAuthor">
+                    {comment.author ? comment.author.username : "Unknown"}
+                </p>
+                <p className="commentDate">{new Date(comment.createdAt).toLocaleString()}</p>
+                <p className="commentContent">{comment.content}</p>
+            
+              </div>
+            ))
+          ) : (
+            <p>No comments yet.</p>
+          )}
         </div>
       </div>
     </div>
