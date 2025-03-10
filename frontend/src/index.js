@@ -11,6 +11,7 @@ import AdminDashboard from "./AdminDashboard";
 import UserProfile from './UserProfile';
 import ProtectedRoute from './ProtectedRoute';
 import PrivateRoute from './PrivateRoute';
+import PostDetail from './PostDetail';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -23,6 +24,7 @@ root.render(
         <Route path="/login" element={<ProtectedRoute><Login /></ProtectedRoute>} />
         <Route path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
         <Route path="/profile" element={<PrivateRoute> <UserProfile /> </PrivateRoute>} />
+        <Route path="/post/:id" element={<PostDetail />} />
       </Routes>
     </Router>
   </React.StrictMode>

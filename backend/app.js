@@ -15,7 +15,7 @@ const cors = require("cors");
 const storage = multer.diskStorage({
   destination: "./uploads",
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 const upload = multer({ storage });
@@ -24,27 +24,43 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(cors());
 app.get("/posts", async (req, res) => {
-    res.set("Cache-Control", "no-store"); // Prevent caching for this route
+    res.set("Cache-Control", "no-store");
     console.log("GET request to /posts received");
   
     try {
       const posts = await prisma.post.findMany({
         include: { author: true },
       });
-      console.log("Fetched posts:", posts); // This should show in the backend logs
+      console.log("Fetched posts:", posts);
   
       if (posts.length === 0) {
-        return res.json([]); // If no posts, send empty array
+        return res.json([]); 
       }
   
-      res.json(posts); // Send posts to frontend
+      res.json(posts);
     } catch (err) {
       console.error("Error fetching posts:", err);
       res.status(500).json({ message: "Error fetching posts" });
     }
   });
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.get("/posts/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const post = await prisma.post.findUnique({
+        where: { id: id },
+        include: { author: true },
+      });
+
+      if (!post) return res.status(404).json({ message: "Post not found" });
+
+      res.json(post);
+    } catch (err) {
+      console.error("Error fetching post:", err);
+      res.status(500).json({ message: "Error fetching post" });
+    }
+});
+
 
 app.get("/api/example", (req, res) => {
   res.json({ message: "This is an API response" });
@@ -114,6 +130,29 @@ app.post("/login", async (req, res, next) => {
   }
 });
 
+app.post("/create-comment", authenticateJWT, async (req, res) => {
+    const { content, postId } = req.body;
+  
+    if (!content || !postId) {
+      return res.status(400).json({ message: "Content and postId are required" });
+    }
+  
+    try {
+      const comment = await prisma.comment.create({
+        data: {
+          content,
+          authorId: req.user.id,
+          postId,
+        },
+      });
+  
+      res.status(201).json({ message: "Comment submitted successfully", comment });
+    } catch (err) {
+      console.error("Error submitting comment:", err);
+      res.status(500).json({ message: "Error submitting comment", error: err.message });
+    }
+  });
+
 app.get("/admin", authenticateJWT, isAdmin, (req, res) => {
   res.json({ message: "Welcome, Admin!" });
 });
@@ -147,6 +186,8 @@ app.post(
     }
   }
 );
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 
 app.listen(5000, () => {

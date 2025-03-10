@@ -12,7 +12,7 @@ const LogoutBtn = () => {
     navigate("/login");
   };
 
-  return <button onClick={handleLogout} className="logOutBtn"><img src="./logout.png" className="logOutImg"></img>Log out</button>;
+  return <button onClick={handleLogout} className="logOutBtn"><img src="/logout.png" className="logOutImg"></img>Log out</button>;
 };
 
 export default LogoutBtn;
